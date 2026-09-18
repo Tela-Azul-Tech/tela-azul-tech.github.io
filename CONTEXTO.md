@@ -378,8 +378,16 @@ No GitHub: **Settings → Pages → Build and deployment → Source: Deploy from
 branch → Branch: `gh-pages` / `(root)`**.
 
 Repositório: `Tela-Azul-Tech/tela-azul-tech.github.io` (site da organização,
-primeiro push e deploy em 18/09/2026). Por ser `<org>.github.io`, o site fica
-na raiz: **https://tela-azul-tech.github.io/**.
+primeiro push e deploy em 18/09/2026). Endereço do GitHub:
+`https://tela-azul-tech.github.io/`.
+
+**Domínio próprio: `telazul.tech`** (Namecheap, comprado em 18/09/2026).
+`public/CNAME` contém `telazul.tech`, então cada `npm run deploy` já leva o
+arquivo para a `gh-pages` — não configurar o domínio só pela interface do
+GitHub, senão o próximo deploy apaga. DNS no Namecheap (Advanced DNS):
+`A @` → 185.199.108.153 / .109.153 / .110.153 / .111.153 e
+`CNAME www` → `tela-azul-tech.github.io`. No GitHub: Settings → Pages →
+Custom domain `telazul.tech` + Enforce HTTPS.
 
 - `base: './'` no Vite gera caminhos relativos, então **o nome do repositório
   não importa** e a mesma build serve para domínio próprio (basta `CNAME` em
@@ -415,7 +423,7 @@ na raiz: **https://tela-azul-tech.github.io/**.
 - [ ] Decidir se os preços ficam públicos.
 - [ ] Formulário/e-mail de contato, se quiser um canal além do WhatsApp.
 - [ ] Analytics (o script de tag pode ir no `index.html`).
-- [ ] Domínio próprio (`public/CNAME` + DNS).
+- [x] Domínio próprio — `telazul.tech` (18/09/2026, ver §8).
 - [ ] Vídeo/GIF real do WhatsApp em vez da simulação, quando houver material.
 - [ ] Depoimento/logotipo do primeiro cliente, quando o piloto virar caso.
 - [ ] Rever o número do painel ilustrado quando existir dado real.
