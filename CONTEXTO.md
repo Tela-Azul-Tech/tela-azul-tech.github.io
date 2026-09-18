@@ -31,8 +31,11 @@ interface WhatsApp, painel administrativo) vive em outro repositório (ver §4).
 - **Nome:** Tela Azul. Sempre escrito assim, duas palavras, iniciais
   maiúsculas. No Instagram: `@telaazultech`.
 - **Origem:** nasceu no **Hackathon do Sol 2026**, de um desafio real do
-  varejo — reduzir o abandono de carrinho. **Venceu a Trilha Varejo.** Essa
-  frase de origem é usada literalmente no site ("e aquilo era só o começo").
+  varejo — reduzir o abandono de carrinho. **Venceu a Trilha Varejo.**
+  **Regra do dono (18/09/2026): isso aparece SÓ no rodapé.** Nada de "história
+  de superação" no corpo da página — é página comercial, o texto vende o
+  produto. O parágrafo da seção Sobre fala do problema (80% de abandono) e do
+  que a ferramenta faz, não da origem.
 - **Cidade:** Natal, RN (aparece no rodapé).
 - **Posicionamento (do material de marca):**
   - "Tecnologia começa com **código**. Solução começa **entendendo o

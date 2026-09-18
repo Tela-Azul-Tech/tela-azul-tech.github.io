@@ -111,7 +111,7 @@ export function Hero() {
           >
             <li>Linguagem natural, voz, foto e PDF</li>
             <li>Catálogo real com ~9.000 produtos em demonstração</li>
-            <li>Vencedor da Trilha Varejo · Hackathon do Sol 2026</li>
+            <li>Piloto sem custo, com o seu catálogo</li>
           </motion.ul>
         </motion.div>
 

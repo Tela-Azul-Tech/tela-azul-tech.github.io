@@ -251,7 +251,7 @@ export const plans = [
 export const manifesto = {
   quote: ['Tecnologia começa com ', 'código', '. Solução começa ', 'entendendo o problema', '.'],
   origin:
-    'Nascemos no Hackathon do Sol 2026, de um desafio real do varejo: reduzir o abandono de carrinho. Vencemos a Trilha Varejo — e aquilo era só o começo.',
+    'Mais de 80% dos carrinhos são abandonados no e-commerce brasileiro. Nossa ferramenta de vendas ataca exatamente esse ponto: entende o que o cliente quer, recomenda com as regras do seu negócio e fecha o pedido — no WhatsApp, no seu app ou nos dois.',
   adapt: ['Criamos tecnologia que ', 'se adapta ao seu negócio', '. Não o contrário.'],
   considers: [
     'o modelo de negócio',
