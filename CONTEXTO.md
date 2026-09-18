@@ -367,7 +367,7 @@ CTA.
 ```bash
 # uma vez
 git init && git add -A && git commit -m "landing page"
-git remote add origin git@github.com:<usuario>/<repo>.git
+git remote add origin git@github.com:Tela-Azul-Tech/tela-azul-tech.github.io.git
 git push -u origin main
 
 # a cada publicação
@@ -375,8 +375,11 @@ npm run deploy      # = predeploy (npm run build) + gh-pages -d dist
 ```
 
 No GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a
-branch → Branch: `gh-pages` / `(root)`**. URL:
-`https://<usuario>.github.io/<repo>/`.
+branch → Branch: `gh-pages` / `(root)`**.
+
+Repositório: `Tela-Azul-Tech/tela-azul-tech.github.io` (site da organização,
+primeiro push e deploy em 18/09/2026). Por ser `<org>.github.io`, o site fica
+na raiz: **https://tela-azul-tech.github.io/**.
 
 - `base: './'` no Vite gera caminhos relativos, então **o nome do repositório
   não importa** e a mesma build serve para domínio próprio (basta `CNAME` em
