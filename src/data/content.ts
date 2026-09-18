@@ -117,18 +117,54 @@ export const differentials = [
   },
 ]
 
-export const channels = [
+// Comparativo dos dois jeitos de usar a ferramenta. Poucos pontos por lado, de
+// propósito: é para o visitante se reconhecer num dos cenários, não para ler
+// uma tabela.
+export const comparison = [
   {
     kind: 'WhatsApp',
-    title: 'Canal de vendas independente',
-    text: 'Um número da sua rede que monta carrinho, ajusta quantidades, troca marcas e fecha o pedido — tudo dentro da conversa que o cliente já tem aberta.',
-    bullets: ['Texto, áudio, foto e PDF', 'Botões e listas nativas', 'Sem app para instalar'],
+    icon: 'whatsapp',
+    title: 'Vender na conversa que já existe',
+    text: 'Um número da sua rede. O cliente manda a lista — por texto, áudio ou foto — e recebe o carrinho pronto.',
+    pros: [
+      'Nada para instalar: funciona em qualquer celular',
+      'Onde o cliente já conversa todo dia',
+      'Canal de vendas pronto, mesmo sem e-commerce',
+      'Voz, foto e PDF do jeito que a pessoa manda',
+    ],
+    bestFor: 'quem quer começar a vender rápido, ou abrir um canal novo',
   },
   {
-    kind: 'Widget no site',
-    title: 'Integrado ao e-commerce via API',
-    text: 'O mesmo motor dentro do seu site ou app. O assistente conversa, o carrinho do e-commerce recebe. Sua identidade visual, sua operação.',
-    bullets: ['Mesmo backend, mesma inteligência', 'Carrinho do seu e-commerce', 'Sua marca na frente'],
+    kind: 'App da sua marca',
+    icon: 'globe',
+    title: 'O mesmo assistente, dentro do seu app ou site',
+    text: 'Sua identidade visual, vitrine com fotos e um carrinho que a pessoa edita na tela — integrado ao e-commerce que você já tem.',
+    pros: [
+      'Sua marca na frente, do início ao checkout',
+      'Vitrine visual: fotos, marcas, promoções lado a lado',
+      'Carrinho editável na tela, com quantidade e marca',
+      'Entra no e-commerce e no pagamento que já existem',
+    ],
+    bestFor: 'quem já vende online e quer uma camada de conversa por cima',
+  },
+]
+
+// Os três cenários de entrada. O ponto central: não é um OU outro.
+export const scenarios = [
+  {
+    title: 'Ainda não vende online?',
+    text: 'Comece pelo WhatsApp. Sem site, sem app, sem projeto de TI: o catálogo entra, o número sai vendendo.',
+    icon: 'spark',
+  },
+  {
+    title: 'Já tem e-commerce?',
+    text: 'Coloque o assistente dentro dele. O cliente conversa, o seu carrinho recebe — e o WhatsApp vira um canal a mais.',
+    icon: 'puzzle',
+  },
+  {
+    title: 'Rede grande?',
+    text: 'Use os dois. É o mesmo motor, o mesmo catálogo e as mesmas campanhas — o cliente escolhe onde comprar.',
+    icon: 'chart',
   },
 ]
 
@@ -273,3 +309,19 @@ export const chatScript: ChatScene[] = [
   },
   { kind: 'reset' },
 ]
+
+// Simulação da interface de APLICATIVO no hero (AppDemo). Mesma pegada da do
+// WhatsApp: valores plausíveis, com marca alternativa para mostrar a troca.
+export const appDemo = {
+  store: 'Loja Centro · 0,9 km · entrega',
+  welcome: 'Oi! Me diga o que você precisa e eu monto o carrinho 🛒',
+  userText: 'compras da semana pra 2 pessoas, até R$ 150',
+  botText: 'Montei uma lista de semana para 2 pessoas por R$ 116,40. Dá uma olhada no carrinho 👇',
+  items: [
+    { id: 'arroz', name: 'Arroz Branco T1 5kg', brand: 'Tio João', price: 24.9, qty: 1, color: '#f3d9a4', altBrand: { name: 'Camil', price: 22.9 } },
+    { id: 'feijao', name: 'Feijão Carioca 1kg', brand: 'Camil', price: 8.49, qty: 2, color: '#c9a27e' },
+    { id: 'frango', name: 'Frango Inteiro kg', brand: 'Sadia', price: 12.9, qty: 2, color: '#f7c9b0' },
+    { id: 'leite', name: 'Leite Integral 1L', brand: 'Piracanjuba', price: 5.79, qty: 6, color: '#dfe7f5' },
+    { id: 'banana', name: 'Banana Prata kg', brand: 'Hortifruti', price: 6.99, qty: 2, color: '#f5e37a' },
+  ],
+}

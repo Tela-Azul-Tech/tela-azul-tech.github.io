@@ -1,9 +1,16 @@
-import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { WHATSAPP_DEMO_LINK } from '../data/content'
+import { AppDemo } from './AppDemo'
 import { ChatDemo } from './ChatDemo'
 import { Icon } from './Icons'
 import './hero.css'
+
+type Canal = 'whatsapp' | 'app'
+
+// Quanto tempo cada simulação fica na tela antes de alternar sozinha. O
+// WhatsApp roda um loop de ~19 s e o app ~17 s; 20 s deixa cada uma completar.
+const AUTO_MS = 20000
 
 const ease = [0.2, 0.8, 0.2, 1] as const
 
@@ -15,6 +22,20 @@ export function Hero() {
   const phoneY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 120])
   const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 60])
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+
+  // Carrossel das duas simulações: alterna sozinho, e para de alternar quando
+  // o visitante escolhe uma — quem clicou quer olhar aquela com calma.
+  const [canal, setCanal] = useState<Canal>('whatsapp')
+  const [manual, setManual] = useState(false)
+  useEffect(() => {
+    if (manual) return
+    const t = window.setInterval(() => setCanal((c) => (c === 'whatsapp' ? 'app' : 'whatsapp')), AUTO_MS)
+    return () => window.clearInterval(t)
+  }, [manual])
+  const escolher = (c: Canal) => {
+    setCanal(c)
+    setManual(true)
+  }
 
   return (
     <section id="top" className="hero bg-blue" ref={ref}>
@@ -63,7 +84,7 @@ export function Hero() {
           >
             Uma camada de inteligência em cima do seu negócio: o cliente pede do jeito que fala e o
             assistente monta o carrinho, recomenda o que você quer vender e fecha o pedido — no
-            WhatsApp ou no seu site.
+            WhatsApp ou no app da sua marca.
           </motion.p>
 
           <motion.div
@@ -105,7 +126,66 @@ export function Hero() {
             animate={reduce ? undefined : { y: [0, -12, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <ChatDemo />
+            <div className="hero-switch" role="tablist" aria-label="Escolha a simulação">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={canal === 'whatsapp'}
+                className={canal === 'whatsapp' ? 'on' : ''}
+                onClick={() => escolher('whatsapp')}
+              >
+                <Icon name="whatsapp" />
+                WhatsApp
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={canal === 'app'}
+                className={canal === 'app' ? 'on' : ''}
+                onClick={() => escolher('app')}
+              >
+                <Icon name="globe" />
+                App da marca
+              </button>
+              <motion.span
+                className="hero-switch-pill"
+                aria-hidden="true"
+                animate={{ x: canal === 'whatsapp' ? 0 : '100%' }}
+                transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+              />
+            </div>
+
+            <div className="hero-stage">
+              <AnimatePresence mode="wait" initial={false}>
+                {canal === 'whatsapp' ? (
+                  <motion.div
+                    key="wa"
+                    initial={{ opacity: 0, x: -40, rotateY: -12 }}
+                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                    exit={{ opacity: 0, x: 40, rotateY: 12 }}
+                    transition={{ duration: 0.5, ease }}
+                  >
+                    <ChatDemo />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="app"
+                    initial={{ opacity: 0, x: 40, rotateY: 12 }}
+                    animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                    exit={{ opacity: 0, x: -40, rotateY: -12 }}
+                    transition={{ duration: 0.5, ease }}
+                  >
+                    <AppDemo />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <p className="hero-stage-caption">
+              {canal === 'whatsapp'
+                ? 'No WhatsApp: a lista vira carrinho dentro da conversa.'
+                : 'No app da sua marca: a mesma inteligência, com vitrine e carrinho na tela.'}
+            </p>
           </motion.div>
 
           <motion.div

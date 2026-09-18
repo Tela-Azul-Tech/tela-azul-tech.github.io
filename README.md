@@ -34,7 +34,14 @@ No GitHub: **Settings → Pages → Source: Deploy from a branch → `gh-pages` 
 O site fica em `https://<usuario>.github.io/<repositorio>/`.
 
 O `vite.config.ts` usa `base: './'` (caminhos relativos), então funciona com
-qualquer nome de repositório — e também num domínio próprio, se um dia apontar.
+qualquer nome de repositório.
+
+**Domínio próprio (`telazul.tech`):** o arquivo `public/CNAME` vai junto no
+build e faz o Pages responder pelo domínio. No GitHub: **Settings → Pages →
+Custom domain: `telazul.tech`** (marque *Enforce HTTPS* quando o certificado
+sair). No DNS do domínio: registros `A` apontando para os IPs do GitHub Pages
+(`185.199.108.153`, `.109.153`, `.110.153`, `.111.153`) e, se quiser `www`, um
+`CNAME` de `www` para `<usuario>.github.io`.
 
 ## Onde mexer
 

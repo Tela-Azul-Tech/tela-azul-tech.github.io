@@ -63,7 +63,7 @@ export function Plans() {
             <h3 className="h3">Piloto sem custo</h3>
             <p>
               Antes de qualquer plano: uma validação real, com o seu catálogo real, a preço de custo
-              por até 3 meses e sem compromisso de contratação. Medimos conversão, ticket médio,
+              por até 1 mês e sem compromisso de contratação. Medimos conversão, ticket médio,
               aderência ao catálogo e demanda não atendida — e evoluímos junto com a sua equipe.
             </p>
           </div>

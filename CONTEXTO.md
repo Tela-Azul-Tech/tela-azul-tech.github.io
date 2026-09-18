@@ -99,14 +99,23 @@ oportunidade de cross-sell, sem acrescentar fricção."
 
 Selo: **"IA com contexto de negócio"** — não é chatbot de FAQ.
 
-### 3.4 Canais e modelos de operação
+### 3.4 Dois jeitos de vender (WhatsApp × app da marca)
 
-- **WhatsApp** — canal de vendas independente. Um número da rede que monta o
-  carrinho, ajusta quantidade, troca marca e fecha o pedido dentro da conversa.
-  Usa botões e listas nativas do WhatsApp. Sem app para instalar.
-- **Widget no site** — integrado ao e-commerce via API. Mesmo motor, mesma
-  inteligência; o carrinho é o do e-commerce do cliente.
-- "Os dois modelos funcionam em qualquer um dos canais."
+A ferramenta tem duas interfaces sobre o mesmo motor, e a página trata isso
+como **escolha do cliente, não do lojista** — o ponto central é "não é um OU
+outro". Vocabulário: "WhatsApp" e "app da sua marca" (a interface web/app do
+produto, com a identidade da rede).
+
+| | WhatsApp | App da sua marca |
+|---|---|---|
+| resumo | vender na conversa que já existe | o mesmo assistente dentro do app/site da rede |
+| pontos fortes | nada para instalar · onde o cliente já conversa · canal pronto mesmo sem e-commerce · voz, foto e PDF | sua marca na frente · vitrine visual · carrinho editável na tela · entra no e-commerce e pagamento existentes |
+| melhor para | começar a vender rápido / abrir canal novo | quem já vende online e quer conversa por cima |
+
+Três cenários de entrada (seção Canais): **ainda não vende online?** → comece
+pelo WhatsApp · **já tem e-commerce?** → coloque o assistente dentro dele ·
+**rede grande?** → use os dois. Dados em `comparison` e `scenarios`
+(`content.ts`). Regra do dono: poucos pontos por lado, sem tabela densa.
 
 ### 3.5 O que funciona hoje (estado real do produto em 09/2026)
 
@@ -157,7 +166,8 @@ Mensalidade por volume de mensagens + implantação única por faixa de catálog
 "Sem teto de volume" · "A mensalidade não varia com o tamanho do catálogo".
 
 **Piloto sem custo:** validação real com o catálogo real do cliente, a preço
-de custo por até 3 meses, sem compromisso de contratação. Mede: conversão,
+de custo por até 1 mês (era 3 meses no material; reduzido pelo dono em
+18/09/2026), sem compromisso de contratação. Mede: conversão,
 ticket médio, aderência ao catálogo, experiência do consumidor, demanda não
 atendida; melhorias com a equipe. "Se fizer sentido → entrada em um dos
 planos."
@@ -245,12 +255,12 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 | # | seção | componente | id | intenção |
 |---|---|---|---|---|
 | 0 | Barra fixa | `Nav.tsx` | — | transparente sobre o hero, vira vidro fosco ao rolar; CTA WhatsApp sempre visível; menu hambúrguer ≤960px |
-| 1 | Hero | `Hero.tsx` + `ChatDemo.tsx` | `#top` | frase-tese + celular com a conversa acontecendo sozinha (a demonstração do produto sem o visitante fazer nada) |
+| 1 | Hero | `Hero.tsx` + `ChatDemo.tsx` + `AppDemo.tsx` | `#top` | frase-tese + celular com a simulação acontecendo sozinha; **seletor WhatsApp / App da marca** alterna entre as duas simulações (carrossel automático a cada 20 s, para ao clicar) |
 | 2 | Marquee | `Marquee.tsx` | — | faixa escura em movimento com os termos-chave; separa hero de conteúdo |
 | 3 | Números | `Stats.tsx` + `Counter.tsx` | `#stats` | os 4 dados com fonte, contadores animados |
 | 4 | Como funciona | `HowItWorks.tsx` | `#como-funciona` | Entende → Recomenda → Converte |
 | 5 | Chat commerce | `ChatCommerce.tsx` | `#chat-commerce` | define o termo + 6 diferenciais + faixa "IA com contexto de negócio" |
-| 6 | Canais | `Channels.tsx` | `#canais` | WhatsApp × Widget + bloco "Funcionando hoje" |
+| 6 | Canais | `Channels.tsx` + `split.css` | `#canais` | **seção dividida ao meio**, sangrando até as bordas: verde do WhatsApp à esquerda, azul Tela Azul à direita; cada lado com a própria demo rodando (`ChatDemo` / `AppDemo`), 4 pontos fortes e "melhor para" embaixo; selo "ou os dois" na costura; abaixo, os 3 cenários e o bloco "Funcionando hoje" |
 | 7 | Dashboard | `Dashboard.tsx` | `#painel` | painel ilustrado com KPIs, barras e campanhas animadas |
 | 8 | Recursos | `Features.tsx` | `#recursos` | os 8 recursos "em todos os planos" |
 | 9 | Planos | `Plans.tsx` | `#planos` | tabela de 4 planos + piloto sem custo |
@@ -297,9 +307,12 @@ src/
     Counter.tsx            número que conta até o valor quando entra na tela
     Nav.tsx + nav.css      barra fixa + menu mobile
     Hero.tsx + hero.css    hero, blobs, badges flutuantes, parallax
-    ChatDemo.tsx + chat-demo.css   celular + conversa animada em loop
+    ChatDemo.tsx + chat-demo.css   celular + conversa do WhatsApp animada em loop
+    AppDemo.tsx + app-demo.css     mesmo celular com a interface de APP: barra da loja,
+                                   chat, gaveta do carrinho (marca, quantidade, total)
     Marquee.tsx            faixa em movimento
-    Stats.tsx, HowItWorks.tsx, ChatCommerce.tsx, Channels.tsx,
+    Channels.tsx + split.css     seção dividida (verde × azul) com as duas demos
+    Stats.tsx, HowItWorks.tsx, ChatCommerce.tsx,
     Dashboard.tsx, Features.tsx, Plans.tsx, Manifesto.tsx, CTA.tsx, Footer.tsx
 ```
 
@@ -307,7 +320,7 @@ src/
 
 Regra: **nenhum texto de marketing dentro de componente**. Tudo vem daqui:
 `WHATSAPP_DEMO_*`, `WHATSAPP_CONTACT_*`, `WHATSAPP_PILOT_LINK`, `INSTAGRAM`, `nav`, `stats`, `steps`,
-`differentials`, `channels`, `working`, `features`, `plans`, `manifesto`,
+`differentials`, `comparison`, `scenarios`, `working`, `features`, `plans`, `manifesto`, `appDemo`,
 `chatScript`. Exceções deliberadas (texto curto acoplado ao layout): títulos de
 seção com `RevealWords`, textos do `Dashboard` ilustrado, o lead do hero e do
 CTA.
@@ -331,6 +344,16 @@ CTA.
   rola sozinho para a última mensagem. Loop infinito. Os totais do roteiro
   fecham a conta: R$ 48,06 → R$ 101,91 (×4/×3/×2) → R$ 44,02 (−café
   +achocolatado R$ 9,49).
+- **AppDemo** — linha do tempo fixa (`passos`, ms acumulados, loop de 17 s):
+  usuário digita → digitando → resposta → gaveta do carrinho sobe (spring) →
+  toca "+" na banana (qty 2→3, linha destacada) → troca a marca do arroz (Tio
+  João → Camil, preço muda) → "Finalizar compra" pulsa → reinicia. O estado do
+  carrinho é DERIVADO do passo (não há estado de carrinho separado). Dados em
+  `appDemo`; total inicial R$ 116,40.
+- **Carrossel do hero** — `canal: 'whatsapp' | 'app'` no `Hero`; `setInterval`
+  de 20 s alterna, e o primeiro clique no seletor (`.hero-switch`) desliga o
+  automático (`manual = true`). Troca com `AnimatePresence mode="wait"` e leve
+  rotação 3D. Legenda abaixo do celular muda junto (`.hero-stage-caption`).
 - **Dashboard** — barras com `scaleY`, KPIs e campanhas em cascata, barra de
   progresso com `width`.
 - **CTA** — brilho cônico girando em 30s atrás do texto (opacidade baixa para
@@ -411,6 +434,8 @@ Custom domain `telazul.tech` + Enforce HTTPS.
 | CSS puro em vez de Tailwind | identidade com poucos tokens; menos dependência; classes legíveis para quem for editar |
 | Conteúdo em `content.ts` | o dono do projeto vai mexer em texto e preço com frequência; não deve precisar abrir JSX |
 | Celular com conversa **real** no hero | é a prova do produto — mostra o formato exato das respostas em vez de descrever |
+| Duas simulações no hero (WhatsApp / app) com carrossel | pedido do dono: mostrar que existe interface própria além do WhatsApp; alternância automática para quem não clica, manual para quem quer olhar com calma |
+| Seção Canais dividida ao meio, uma cor e uma demo por lado | pedido do dono ("stylish, com demo rodando em cada lado"); WhatsApp à esquerda, app à direita; empilha em ≤960px com o selo "ou os dois" na costura |
 | Cores do WhatsApp só dentro do celular | reconhecimento imediato do canal, sem contaminar a identidade da página |
 | Badges do hero à direita do celular | à esquerda colidiam com o título em 1440px |
 | Faixa "IA com contexto de negócio" com rótulo horizontal | a versão vertical cortava o texto |
@@ -429,7 +454,14 @@ Custom domain `telazul.tech` + Enforce HTTPS.
   1200×630, azul com o logo e a frase-tese.
 - [ ] Decidir se os preços ficam públicos.
 - [ ] Formulário/e-mail de contato, se quiser um canal além do WhatsApp.
-- [ ] Analytics (o script de tag pode ir no `index.html`).
+- [x] Analytics — GA4 instalado em 18/09/2026 no `index.html` (gtag). Propriedade
+  "Tela Azul — Landing Page" (id `554936614`) na conta "Blog Pessoal" do
+  Google Analytics; fluxo web `15804351302`; **ID de métrica `G-8HZPPTE0RB`**.
+  URL cadastrada no fluxo: `https://telazul.tech`.
+- [x] Microsoft Clarity — instalado em 18/09/2026 no `index.html`, logo após o
+  GA4. Projeto "Tela Azul - Landing Page", **ID `ykdgw47fd7`**, site
+  `telazul.tech`, setor B2B Services. Painel: clarity.microsoft.com (login com a
+  conta do dono). Grava sessões e mapas de calor; sem custo.
 - [x] Domínio próprio — `telazul.tech` (18/09/2026, ver §8).
 - [ ] Vídeo/GIF real do WhatsApp em vez da simulação, quando houver material.
 - [ ] Depoimento/logotipo do primeiro cliente, quando o piloto virar caso.

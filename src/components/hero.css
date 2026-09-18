@@ -106,6 +106,71 @@
   perspective: 1200px;
 }
 
+.hero-switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 320px;
+  margin: 0 auto 16px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  isolation: isolate;
+}
+
+.hero-switch button {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.hero-switch button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-switch button.on {
+  color: var(--blue);
+}
+
+.hero-switch-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-stage {
+  perspective: 1200px;
+}
+
+.hero-stage-caption {
+  margin: 16px auto 0;
+  max-width: 320px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  min-height: 2.6em;
+}
+
 .hero-badge {
   position: absolute;
   background: #fff;
@@ -128,13 +193,13 @@
 }
 
 .hero-badge-a {
-  left: calc(50% + 150px);
-  top: 70px;
+  left: calc(50% + 192px);
+  top: 150px;
 }
 
 .hero-badge-b {
-  left: calc(50% + 120px);
-  bottom: 96px;
+  left: calc(50% + 192px);
+  bottom: 170px;
 }
 
 .hero-scroll {
@@ -172,7 +237,72 @@
 }
 
 @media (max-width: 1200px) {
-  .hero-badge {
+  .hero-switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 320px;
+  margin: 0 auto 16px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  isolation: isolate;
+}
+
+.hero-switch button {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.hero-switch button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-switch button.on {
+  color: var(--blue);
+}
+
+.hero-switch-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-stage {
+  perspective: 1200px;
+}
+
+.hero-stage-caption {
+  margin: 16px auto 0;
+  max-width: 320px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  min-height: 2.6em;
+}
+
+.hero-badge {
     display: none;
   }
 }
@@ -205,7 +335,78 @@
     padding-top: 110px;
   }
 
-  .hero-badge {
+  .hero-switch {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 320px;
+  margin: 0 auto 16px;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(6px);
+  isolation: isolate;
+}
+
+.hero-switch button {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.hero-switch button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hero-switch button.on {
+  color: var(--blue);
+}
+
+.hero-switch-pill {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-stage {
+  perspective: 1200px;
+}
+
+.hero-stage-caption {
+  margin: 16px auto 0;
+  max-width: 320px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  min-height: 2.6em;
+}
+
+.hero-badge {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-switch {
+    width: 286px;
   }
 }

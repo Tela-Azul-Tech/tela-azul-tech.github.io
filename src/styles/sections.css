@@ -226,8 +226,31 @@
 }
 
 /* ── Canais ──────────────────────────────────────────────────────────────── */
-.channel {
-  padding: 36px;
+.scenarios {
+  margin-top: 22px;
+}
+
+.scenario {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 30px;
+}
+
+.scenario .card-icon {
+  background: rgba(255, 255, 255, 0.1);
+  color: #7ea6ff;
+}
+
+.scenario h3 {
+  font-size: 19px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.scenario p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 15.5px;
 }
 
 .channel-kind {
