@@ -726,6 +726,14 @@
   font-size: 14px;
   opacity: 0.75;
   letter-spacing: 0.04em;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(255, 255, 255, 0.4);
+}
+
+.cta-phone:hover {
+  opacity: 1;
 }
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */

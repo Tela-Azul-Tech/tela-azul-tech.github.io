@@ -1,4 +1,4 @@
-import { WHATSAPP_LINK, plans } from '../data/content'
+import { WHATSAPP_CONTACT_LINK, WHATSAPP_PILOT_LINK, plans } from '../data/content'
 import { Icon } from './Icons'
 import { Reveal, RevealWords } from './Reveal'
 
@@ -48,7 +48,7 @@ export function Plans() {
                 <span>Implantação única</span>
                 <strong>{p.setup}</strong>
               </div>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className={`btn ${p.highlight ? 'btn-white' : 'btn-ghost'}`}>
+              <a href={WHATSAPP_CONTACT_LINK} target="_blank" rel="noreferrer" className={`btn ${p.highlight ? 'btn-white' : 'btn-ghost'}`}>
                 Falar com a gente
               </a>
             </Reveal>
@@ -67,7 +67,7 @@ export function Plans() {
               aderência ao catálogo e demanda não atendida — e evoluímos junto com a sua equipe.
             </p>
           </div>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-primary">
+          <a href={WHATSAPP_PILOT_LINK} target="_blank" rel="noreferrer" className="btn btn-primary">
             Quero um piloto
             <span className="arrow">→</span>
           </a>

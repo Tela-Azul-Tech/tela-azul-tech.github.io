@@ -1,4 +1,4 @@
-import { INSTAGRAM, WHATSAPP_LINK, nav } from '../data/content'
+import { INSTAGRAM, WHATSAPP_CONTACT_LINK, nav } from '../data/content'
 import { Icon } from './Icons'
 import { Logo } from './Logo'
 
@@ -18,7 +18,7 @@ export function Footer() {
           ))}
         </nav>
         <div className="footer-social">
-          <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" aria-label="WhatsApp">
+          <a href={WHATSAPP_CONTACT_LINK} target="_blank" rel="noreferrer" aria-label="WhatsApp">
             <Icon name="whatsapp" />
           </a>
           <a href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="Instagram">

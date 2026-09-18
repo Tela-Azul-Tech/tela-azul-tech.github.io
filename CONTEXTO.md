@@ -175,11 +175,18 @@ O backend e as interfaces do produto vivem em
 `~/Documents/app-mercado-hackathon` (Next.js 16, Postgres + pgvector, Gemini).
 Fatos relevantes para a landing:
 
-- **WhatsApp de produção:** `+55 84 9838-7270` → `WHATSAPP_NUMBER =
-  '558498387270'` em `src/data/content.ts`. É uma conta de produção da
-  WhatsApp Cloud API chamada "Tela Azul", aberta a qualquer número (não é o
-  número de teste da Meta). Todos os CTAs "Testar no WhatsApp" apontam para
-  `https://wa.me/558498387270?text=oi`.
+- **Dois números de WhatsApp, com papéis diferentes** (`src/data/content.ts`):
+  - **Demo** — `+55 84 9838-7270` → `WHATSAPP_DEMO_NUMBER = '558498387270'`.
+    É a ferramenta em produção (conta da WhatsApp Cloud API chamada "Tela
+    Azul", aberta a qualquer número). Só os CTAs **"Testar no WhatsApp" /
+    "Testar agora"** (nav, hero, CTA final) apontam para cá, com `?text=oi`.
+  - **Contato** — `+55 84 98779-5754` → `WHATSAPP_CONTACT_NUMBER =
+    '5584987795754'`. É a equipe. Tudo que remete a **"falar com a gente"**
+    (botões dos planos, "Quero um piloto", ícone do rodapé, telefone exibido
+    no CTA final) aponta para cá, com mensagem pré-preenchida
+    (`WHATSAPP_CONTACT_LINK` / `WHATSAPP_PILOT_LINK`).
+  - Regra (18/09/2026): **nunca mandar "fale com a gente" para o número da
+    demo** — quem clica cai num bot montando carrinho, não numa pessoa.
 - A conversa animada no hero (`chatScript` em `content.ts`) **replica o formato
   real** das respostas do assistente do WhatsApp: mensagem de texto + card com
   "✅ Adicionei:" / "🔄 Ajustei:" / "🗑 Removi:", total do carrinho, e os três
@@ -188,7 +195,7 @@ Fatos relevantes para a landing:
   R$ 33,69).
 - A saudação real do WhatsApp é "Olá! Bem-vindo à ferramenta de Chat-Commerce"
   — mesma terminologia da landing.
-- Se o número mudar, muda só `WHATSAPP_NUMBER`. O `INSTAGRAM` está ao lado.
+- Se um número mudar, muda só a constante correspondente. O `INSTAGRAM` está ao lado.
 - Nenhuma credencial do produto está (nem deve estar) neste repositório.
 
 ---
@@ -248,7 +255,7 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 | 8 | Recursos | `Features.tsx` | `#recursos` | os 8 recursos "em todos os planos" |
 | 9 | Planos | `Plans.tsx` | `#planos` | tabela de 4 planos + piloto sem custo |
 | 10 | Sobre | `Manifesto.tsx` | `#sobre` | o manifesto da marca, literal |
-| 11 | CTA final | `CTA.tsx` | `#contato` | "O próximo carrinho pode começar agora" + WhatsApp + Instagram |
+| 11 | CTA final | `CTA.tsx` | `#contato` | "O próximo carrinho pode começar agora" + botão da demo + Instagram + telefone de contato |
 | 12 | Rodapé | `Footer.tsx` | — | logo, links, social, origem no hackathon |
 
 Os `id`s são os alvos do menu (`nav` em `content.ts`). Rolagem suave via
@@ -299,7 +306,7 @@ src/
 ### 7.3 Conteúdo centralizado (`src/data/content.ts`)
 
 Regra: **nenhum texto de marketing dentro de componente**. Tudo vem daqui:
-`WHATSAPP_NUMBER`, `WHATSAPP_LINK`, `INSTAGRAM`, `nav`, `stats`, `steps`,
+`WHATSAPP_DEMO_*`, `WHATSAPP_CONTACT_*`, `WHATSAPP_PILOT_LINK`, `INSTAGRAM`, `nav`, `stats`, `steps`,
 `differentials`, `channels`, `working`, `features`, `plans`, `manifesto`,
 `chatScript`. Exceções deliberadas (texto curto acoplado ao layout): títulos de
 seção com `RevealWords`, textos do `Dashboard` ilustrado, o lead do hero e do

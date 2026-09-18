@@ -24,7 +24,7 @@ There is no test suite. Verification is `npm run build` + `npm run lint` + looki
 - **Numbers on the page must have a source** (CONTEXTO §3.7). Dashboard KPIs are illustrative and must stay labelled as such.
 - Animation goes through the shared primitives (`Reveal`, `RevealWords`, `Counter`) and must respect `useReducedMotion()` in components plus the reduced-motion block in CSS.
 - `vite.config.ts` uses `base: './'` — keep it; it's what makes the build work on any GitHub Pages repo name or custom domain.
-- The WhatsApp number (`WHATSAPP_NUMBER`) is a real production account. Changing it changes every CTA.
+- **Two WhatsApp numbers, never swap them:** `WHATSAPP_DEMO_LINK` (…7270, the live product bot) only behind "Testar no WhatsApp"; `WHATSAPP_CONTACT_LINK` / `WHATSAPP_PILOT_LINK` (…5754, the team) behind anything that means "falar com a gente" (CONTEXTO §4).
 
 ## Where things are
 

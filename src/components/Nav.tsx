@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { useState } from 'react'
-import { WHATSAPP_LINK, nav } from '../data/content'
+import { WHATSAPP_DEMO_LINK, nav } from '../data/content'
 import { Icon } from './Icons'
 import { Logo } from './Logo'
 import './nav.css'
@@ -32,7 +32,7 @@ export function Nav() {
           ))}
         </nav>
 
-        <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className={`btn nav-cta ${scrolled || open ? 'btn-primary' : 'btn-white'}`}>
+        <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className={`btn nav-cta ${scrolled || open ? 'btn-primary' : 'btn-white'}`}>
           <Icon name="whatsapp" />
           Testar agora
         </a>
@@ -66,7 +66,7 @@ export function Nav() {
                 {item.label}
               </motion.a>
             ))}
-            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-primary" onClick={() => setOpen(false)}>
+            <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-primary" onClick={() => setOpen(false)}>
               <Icon name="whatsapp" />
               Testar no WhatsApp
             </a>

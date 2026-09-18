@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import { WHATSAPP_LINK } from '../data/content'
+import { WHATSAPP_DEMO_LINK } from '../data/content'
 import { ChatDemo } from './ChatDemo'
 import { Icon } from './Icons'
 import './hero.css'
@@ -72,7 +72,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1, ease }}
           >
-            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
+            <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
               <Icon name="whatsapp" />
               Testar no WhatsApp
               <span className="arrow">→</span>

@@ -4,8 +4,23 @@
 // identidade da marca.
 // ───────────────────────────────────────────────────────────────────────────
 
-export const WHATSAPP_NUMBER = '558498387270'
-export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('oi')}`
+// Dois números, dois papéis — não misturar:
+//  - DEMO: a ferramenta em produção. "Testar no WhatsApp" manda um "oi" pra cá.
+//  - CONTATO: a equipe da Tela Azul. "Falar com a gente" / "Quero um piloto".
+const waLink = (numero: string, texto: string) => `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`
+
+export const WHATSAPP_DEMO_NUMBER = '558498387270'
+export const WHATSAPP_DEMO_LINK = waLink(WHATSAPP_DEMO_NUMBER, 'oi')
+
+export const WHATSAPP_CONTACT_NUMBER = '5584987795754'
+export const WHATSAPP_CONTACT_LINK = waLink(
+  WHATSAPP_CONTACT_NUMBER,
+  'Olá! Quero saber mais sobre a ferramenta de vendas da Tela Azul.',
+)
+export const WHATSAPP_PILOT_LINK = waLink(
+  WHATSAPP_CONTACT_NUMBER,
+  'Olá! Quero um piloto da ferramenta de vendas da Tela Azul com o nosso catálogo.',
+)
 export const INSTAGRAM = 'https://www.instagram.com/telaazultech'
 
 export const nav = [

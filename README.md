@@ -48,7 +48,7 @@ qualquer nome de repositório — e também num domínio próprio, se um dia apo
 | Título, descrição, fonte | `index.html` |
 
 Número do WhatsApp e Instagram estão no topo de `src/data/content.ts`
-(`WHATSAPP_NUMBER`, `INSTAGRAM`).
+(`WHATSAPP_DEMO_NUMBER` = a demo da ferramenta, `WHATSAPP_CONTACT_NUMBER` = a equipe, `INSTAGRAM`).
 
 ## Identidade
 

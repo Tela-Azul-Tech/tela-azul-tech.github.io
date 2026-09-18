@@ -1,11 +1,12 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { INSTAGRAM, WHATSAPP_LINK, WHATSAPP_NUMBER } from '../data/content'
+import { INSTAGRAM, WHATSAPP_CONTACT_LINK, WHATSAPP_CONTACT_NUMBER, WHATSAPP_DEMO_LINK } from '../data/content'
 import { Icon } from './Icons'
 import { Reveal } from './Reveal'
 
 export function CTA() {
   const reduce = useReducedMotion()
-  const fone = `+${WHATSAPP_NUMBER.slice(0, 2)} (${WHATSAPP_NUMBER.slice(2, 4)}) ${WHATSAPP_NUMBER.slice(4, 8)}-${WHATSAPP_NUMBER.slice(8)}`
+  const n = WHATSAPP_CONTACT_NUMBER
+  const fone = `+${n.slice(0, 2)} (${n.slice(2, 4)}) ${n.slice(4, 9)}-${n.slice(9)}`
   return (
     <section id="contato" className="section cta">
       <div className="container">
@@ -25,7 +26,7 @@ export function CTA() {
             a sua própria lista. Depois a gente conversa sobre o piloto com o seu catálogo.
           </p>
           <div className="cta-actions">
-            <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
+            <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
               <Icon name="whatsapp" />
               Testar no WhatsApp
               <span className="arrow">→</span>
@@ -35,7 +36,9 @@ export function CTA() {
               @telaazultech
             </a>
           </div>
-          <span className="cta-phone">{fone}</span>
+          <a href={WHATSAPP_CONTACT_LINK} target="_blank" rel="noreferrer" className="cta-phone">
+            Para falar com a gente: {fone}
+          </a>
         </Reveal>
       </div>
     </section>
