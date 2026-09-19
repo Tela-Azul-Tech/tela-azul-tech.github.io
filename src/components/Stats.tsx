@@ -6,6 +6,11 @@ export function Stats() {
   return (
     <section id="stats" className="stats">
       <div className="container">
+        <Reveal className="stats-head">
+          <h2 className="display">
+            Recomendação não é apenas experiência. <strong>É geração de receita.</strong>
+          </h2>
+        </Reveal>
         <div className="stats-grid">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.1} className="stat">

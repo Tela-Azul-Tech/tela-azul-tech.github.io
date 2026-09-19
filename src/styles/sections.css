@@ -44,6 +44,15 @@
   background: var(--paper);
 }
 
+.stats-head {
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+.stats-head h2 {
+  font-size: clamp(26px, 3vw, 40px);
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -743,6 +752,19 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 8px;
+}
+
+/* Ponte entre o teste (botões) e o contato (telefone). */
+.cta-next {
+  max-width: 52ch;
+  margin-top: 10px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-next + .cta-phone {
+  margin-top: -8px;
 }
 
 .cta-phone {

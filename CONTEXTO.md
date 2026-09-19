@@ -260,7 +260,7 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 | 0 | Barra fixa | `Nav.tsx` | — | transparente sobre o hero, vira vidro fosco ao rolar; CTA WhatsApp sempre visível; menu hambúrguer ≤960px |
 | 1 | Hero | `Hero.tsx` + `ChatDemo.tsx` + `AppDemo.tsx` | `#top` | frase-tese + celular com a simulação acontecendo sozinha; **seletor WhatsApp / App da marca** alterna entre as duas simulações (carrossel automático a cada 20 s, para ao clicar) |
 | 2 | Marquee | `Marquee.tsx` | — | faixa escura em movimento com os termos-chave; separa hero de conteúdo |
-| 3 | Números | `Stats.tsx` + `Counter.tsx` | `#stats` | os 4 dados com fonte, contadores animados |
+| 3 | Números | `Stats.tsx` + `Counter.tsx` | `#stats` | frase "Recomendação não é apenas experiência. É geração de receita." + os 4 dados com fonte, contadores animados |
 | 4 | Como funciona | `HowItWorks.tsx` | `#como-funciona` | Entende → Recomenda → Converte |
 | 5 | Chat commerce | `ChatCommerce.tsx` | `#chat-commerce` | define o termo + 6 diferenciais + faixa "IA com contexto de negócio" |
 | 6 | Canais | `Channels.tsx` + `split.css` | `#canais` | **seção dividida ao meio**, sangrando até as bordas: verde do WhatsApp à esquerda, azul Tela Azul à direita; cada lado com a própria demo rodando (`ChatDemo` / `AppDemo`), 4 pontos fortes e "melhor para" embaixo; selo "ou os dois" na costura; abaixo, os 3 cenários e o bloco "Funcionando hoje" |
@@ -268,7 +268,7 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 | 8 | Recursos | `Features.tsx` | `#recursos` | os 8 recursos "em todos os planos" |
 | 9 | Planos | `Plans.tsx` | `#planos` | tabela de 4 planos + piloto sem custo |
 | 10 | Sobre | `Manifesto.tsx` | `#sobre` | o manifesto da marca, literal |
-| 11 | CTA final | `CTA.tsx` | `#contato` | "O próximo carrinho pode começar agora" + botão da demo + Instagram + telefone de contato |
+| 11 | CTA final | `CTA.tsx` | `#contato` | "A próxima conversa pode virar um carrinho" + botão da demo + Instagram + telefone de contato |
 | 12 | Rodapé | `Footer.tsx` | — | logo, links, social, origem no hackathon |
 
 Os `id`s são os alvos do menu (`nav` em `content.ts`). Rolagem suave via

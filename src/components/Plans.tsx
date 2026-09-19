@@ -11,12 +11,13 @@ export function Plans() {
             <span className="eyebrow">Planos</span>
           </Reveal>
           <h2 className="display h2">
-            <RevealWords text="Um modelo simples para começar." strong={['simples']} />
+            <RevealWords text="Simples para começar. Preparado para crescer." strong={['começar.', 'crescer.']} />
           </h2>
           <Reveal delay={0.2}>
             <p className="lead">
-              Mensalidade por volume de mensagens + implantação única por faixa de catálogo. Sem
-              teto de volume, e a mensalidade não varia com o tamanho do catálogo.
+              Mensalidade baseada no volume de mensagens + implantação única de acordo com o
+              catálogo. Seu negócio cresce, seu catálogo também — sem aumentar a mensalidade por
+              isso.
             </p>
           </Reveal>
         </div>

@@ -82,9 +82,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.85, ease }}
           >
-            Uma camada de inteligência em cima do seu negócio: o cliente pede do jeito que fala e o
-            assistente monta o carrinho, recomenda o que você quer vender e fecha o pedido — no
-            WhatsApp ou no app da sua marca.
+            Transforme intenção em uma jornada de compra mais inteligente. O cliente conversa
+            naturalmente, o assistente entende o que ele procura, monta o carrinho, sugere produtos
+            relevantes e fecha o pedido — pelo WhatsApp ou direto no app da sua marca.
           </motion.p>
 
           <motion.div
@@ -194,8 +194,8 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 1.4, ease }}
           >
-            <strong>+80%</strong>
-            <span>dos carrinhos são abandonados</span>
+            <strong>Comunicação natural</strong>
+            <span>por voz, texto, foto e PDF</span>
           </motion.div>
           <motion.div
             className="hero-badge hero-badge-b"

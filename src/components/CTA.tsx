@@ -19,11 +19,11 @@ export function CTA() {
           />
           <span className="eyebrow">Próximo passo</span>
           <h2 className="display h2">
-            O próximo carrinho <strong>pode começar agora.</strong>
+            A próxima conversa <strong>pode virar um carrinho.</strong>
           </h2>
           <p className="lead">
-            Teste a ferramenta agora mesmo, no seu WhatsApp: mande um “oi” e monte um carrinho com
-            a sua própria lista. Depois a gente conversa sobre o piloto com o seu catálogo.
+            Experimente agora pelo WhatsApp. Converse com o assistente, faça um pedido do seu jeito
+            e veja a solução funcionando na prática.
           </p>
           <div className="cta-actions">
             <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
@@ -36,8 +36,12 @@ export function CTA() {
               @telaazultech
             </a>
           </div>
+          <p className="cta-next">
+            Gostou da experiência? A próxima etapa é testar com o catálogo e a realidade do seu
+            negócio.
+          </p>
           <a href={WHATSAPP_CONTACT_LINK} target="_blank" rel="noreferrer" className="cta-phone">
-            Para falar com a gente: {fone}
+            Entre em contato com a gente: {fone}
           </a>
         </Reveal>
       </div>

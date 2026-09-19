@@ -67,7 +67,7 @@ export const steps = [
   {
     n: '01',
     title: 'Entende',
-    text: 'Linguagem natural e intenção. O cliente pede do jeito que fala — por texto, áudio, foto de lista ou PDF de receita.',
+    text: 'Linguagem natural e com intenção. O cliente pede do seu jeito — por texto, áudio, foto ou PDF — o assistente transforma a interação em contexto para a compra.',
     tags: ['integração ao canal do cliente'],
   },
   {
@@ -125,12 +125,12 @@ export const comparison = [
     kind: 'WhatsApp',
     icon: 'whatsapp',
     title: 'Vender na conversa que já existe',
-    text: 'Um número da sua rede. O cliente manda a lista — por texto, áudio ou foto — e recebe o carrinho pronto.',
+    text: 'Em um número da sua rede, o cliente manda a lista — por texto, áudio, foto ou PDF — e recebe o carrinho pronto para a venda.',
     pros: [
       'Nada para instalar: funciona em qualquer celular',
       'Onde o cliente já conversa todo dia',
       'Canal de vendas pronto, mesmo sem e-commerce',
-      'Voz, foto e PDF do jeito que a pessoa manda',
+      'Voz, texto, foto e PDF — do jeito que o consumidor preferir',
     ],
     bestFor: 'quem quer começar a vender rápido, ou abrir um canal novo',
   },
@@ -138,14 +138,14 @@ export const comparison = [
     kind: 'App da sua marca',
     icon: 'globe',
     title: 'O mesmo assistente, dentro do seu app ou site',
-    text: 'Sua identidade visual, vitrine com fotos e um carrinho que a pessoa edita na tela — integrado ao e-commerce que você já tem.',
+    text: 'Um assistente que se adapta à identidade e à jornada da sua marca, integrando descoberta, recomendações e carrinho ao seu app ou site — conectado à estrutura de e-commerce que você já utiliza.',
     pros: [
       'Sua marca na frente, do início ao checkout',
       'Vitrine visual: fotos, marcas, promoções lado a lado',
       'Carrinho editável na tela, com quantidade e marca',
-      'Entra no e-commerce e no pagamento que já existem',
+      'Conectado ao e-commerce e ao pagamento que já existem',
     ],
-    bestFor: 'quem já vende online e quer uma camada de conversa por cima',
+    bestFor: 'quem já vende online e quer uma camada de inteligência por cima',
   },
 ]
 
@@ -153,7 +153,7 @@ export const comparison = [
 export const scenarios = [
   {
     title: 'Ainda não vende online?',
-    text: 'Comece pelo WhatsApp. Sem site, sem app, sem projeto de TI: o catálogo entra, o número sai vendendo.',
+    text: 'Comece pelo WhatsApp. Sem site, sem app, sem projeto de TI: o catálogo entra, o assistente começa a vender pra você.',
     icon: 'spark',
   },
   {
@@ -188,11 +188,11 @@ export const features = [
   },
   {
     title: 'Painel de gestão',
-    text: 'Visão operacional para o supermercado, em tempo real.',
+    text: 'Visão operacional para a sua gestão, em tempo real.',
   },
   {
     title: 'Campanhas inteligentes',
-    text: 'A IA empurra o que vocês querem vender.',
+    text: 'A IA direciona o consumidor para o que a empresa quer vender.',
   },
   {
     title: 'Curadoria da vitrine',
@@ -200,7 +200,7 @@ export const features = [
   },
   {
     title: 'Relatórios de comportamento',
-    text: 'O que pedem — e o que não encontram.',
+    text: 'Conheça o seu cliente. Saiba o que ele pede e o que não está encontrando.',
   },
   {
     title: 'Produto e suporte',
@@ -208,7 +208,7 @@ export const features = [
   },
   {
     title: 'Tecnologia que se encaixa',
-    text: 'A solução entra na operação sem exigir uma nova operação.',
+    text: 'A solução entra na sua empresa sem exigir uma nova operação.',
   },
 ]
 
