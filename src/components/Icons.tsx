@@ -53,6 +53,11 @@ const icons: Record<string, () => React.JSX.Element> = {
       <path d="M8 9h8M8 12h5" />
     </svg>
   ),
+  chevron: () => (
+    <svg {...base}>
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  ),
   globe: () => (
     <svg {...base}>
       <circle cx="12" cy="12" r="9" />

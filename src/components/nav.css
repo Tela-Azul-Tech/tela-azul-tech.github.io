@@ -74,6 +74,95 @@
   font-size: 15px;
 }
 
+.nav-cta svg:last-child {
+  width: 16px;
+  height: 16px;
+  margin: 0 -4px 0 -2px;
+  transition: transform 0.3s var(--ease);
+}
+
+/* Dropdown do "Testar agora": abre no hover e no foco (teclado). O padding-top
+   do menu é a "ponte" — o mouse atravessa o vão entre botão e menu sem fechar. */
+.nav-cta-wrap {
+  position: relative;
+}
+
+.nav-cta-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding-top: 10px;
+  min-width: 270px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.2s var(--ease),
+    transform 0.25s var(--ease),
+    visibility 0s linear 0.25s;
+}
+
+.nav-cta-wrap:hover .nav-cta-menu,
+.nav-cta-wrap:focus-within .nav-cta-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.nav-cta-wrap:hover .nav-cta svg:last-child,
+.nav-cta-wrap:focus-within .nav-cta svg:last-child {
+  transform: rotate(180deg);
+}
+
+.nav-cta-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  transition: background 0.2s;
+}
+
+.nav-cta-menu a:first-child {
+  border-radius: 16px 16px 0 0;
+}
+
+.nav-cta-menu a:last-child {
+  border-radius: 0 0 16px 16px;
+  border-top: 0;
+  box-shadow: 0 24px 50px -16px rgba(0, 0, 0, 0.35);
+}
+
+.nav-cta-menu a:hover {
+  background: var(--blue-soft);
+}
+
+.nav-cta-menu svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  color: var(--blue);
+}
+
+.nav-cta-menu span {
+  display: grid;
+  gap: 1px;
+}
+
+.nav-cta-menu strong {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.nav-cta-menu em {
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
 .nav-burger {
   display: none;
   width: 44px;
@@ -109,7 +198,7 @@
 
 @media (max-width: 960px) {
   .nav-links,
-  .nav-cta {
+  .nav-cta-wrap {
     display: none;
   }
 

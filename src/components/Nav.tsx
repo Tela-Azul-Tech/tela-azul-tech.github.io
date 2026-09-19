@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { useState } from 'react'
-import { WHATSAPP_DEMO_LINK, nav } from '../data/content'
+import { WEBAPP_DEMO_LINK, WHATSAPP_DEMO_LINK, nav } from '../data/content'
 import { Icon } from './Icons'
 import { Logo } from './Logo'
 import './nav.css'
@@ -32,10 +32,29 @@ export function Nav() {
           ))}
         </nav>
 
-        <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className={`btn nav-cta ${scrolled || open ? 'btn-primary' : 'btn-white'}`}>
-          <Icon name="whatsapp" />
-          Testar agora
-        </a>
+        {/* "Testar agora" abre as duas opções no hover (e no foco, para teclado). */}
+        <div className="nav-cta-wrap">
+          <button type="button" className={`btn nav-cta ${scrolled || open ? 'btn-primary' : 'btn-white'}`} aria-haspopup="menu">
+            Testar agora
+            <Icon name="chevron" />
+          </button>
+          <div className="nav-cta-menu" role="menu">
+            <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" role="menuitem">
+              <Icon name="whatsapp" />
+              <span>
+                <strong>Testar no WhatsApp</strong>
+                <em>na conversa, direto do celular</em>
+              </span>
+            </a>
+            <a href={WEBAPP_DEMO_LINK} target="_blank" rel="noreferrer" role="menuitem">
+              <Icon name="globe" />
+              <span>
+                <strong>Testar no web app</strong>
+                <em>a mesma demo, no navegador</em>
+              </span>
+            </a>
+          </div>
+        </div>
 
         <button className="nav-burger" aria-label={open ? 'Fechar menu' : 'Abrir menu'} aria-expanded={open} onClick={() => setOpen((o) => !o)}>
           <span style={{ transform: open ? 'translateY(7px) rotate(45deg)' : undefined }} />
@@ -69,6 +88,10 @@ export function Nav() {
             <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-primary" onClick={() => setOpen(false)}>
               <Icon name="whatsapp" />
               Testar no WhatsApp
+            </a>
+            <a href={WEBAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-ghost" onClick={() => setOpen(false)}>
+              <Icon name="globe" />
+              Testar no web app
             </a>
           </motion.nav>
         )}

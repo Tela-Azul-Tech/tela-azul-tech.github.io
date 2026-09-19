@@ -11,6 +11,9 @@ const waLink = (numero: string, texto: string) => `https://wa.me/${numero}?text=
 
 export const WHATSAPP_DEMO_NUMBER = '558498387270'
 export const WHATSAPP_DEMO_LINK = waLink(WHATSAPP_DEMO_NUMBER, 'oi')
+// A mesma demo, na interface web da ferramenta. Sempre aparece ao lado do
+// botão do WhatsApp: são os dois jeitos de testar.
+export const WEBAPP_DEMO_LINK = 'https://app.telazul.tech/chat'
 
 export const WHATSAPP_CONTACT_NUMBER = '5584987795754'
 export const WHATSAPP_CONTACT_LINK = waLink(

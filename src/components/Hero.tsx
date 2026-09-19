@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
-import { WHATSAPP_DEMO_LINK } from '../data/content'
+import { WEBAPP_DEMO_LINK, WHATSAPP_DEMO_LINK } from '../data/content'
 import { AppDemo } from './AppDemo'
 import { ChatDemo } from './ChatDemo'
 import { Icon } from './Icons'
@@ -96,7 +96,10 @@ export function Hero() {
             <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
               <Icon name="whatsapp" />
               Testar no WhatsApp
-              <span className="arrow">→</span>
+            </a>
+            <a href={WEBAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
+              <Icon name="globe" />
+              Testar no web app
             </a>
             <a href="#como-funciona" className="btn btn-ghost">
               Ver como funciona

@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { INSTAGRAM, WHATSAPP_CONTACT_LINK, WHATSAPP_CONTACT_NUMBER, WHATSAPP_DEMO_LINK } from '../data/content'
+import { INSTAGRAM, WEBAPP_DEMO_LINK, WHATSAPP_CONTACT_LINK, WHATSAPP_CONTACT_NUMBER, WHATSAPP_DEMO_LINK } from '../data/content'
 import { Icon } from './Icons'
 import { Reveal } from './Reveal'
 
@@ -29,7 +29,10 @@ export function CTA() {
             <a href={WHATSAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
               <Icon name="whatsapp" />
               Testar no WhatsApp
-              <span className="arrow">→</span>
+            </a>
+            <a href={WEBAPP_DEMO_LINK} target="_blank" rel="noreferrer" className="btn btn-white">
+              <Icon name="globe" />
+              Testar no web app
             </a>
             <a href={INSTAGRAM} target="_blank" rel="noreferrer" className="btn btn-ghost">
               <Icon name="instagram" />
