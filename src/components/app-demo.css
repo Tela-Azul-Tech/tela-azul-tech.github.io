@@ -1,122 +1,162 @@
-/* Interface de aplicativo dentro do mesmo celular do ChatDemo (.phone). */
+/* Widget "Compre conversando" dentro do mesmo celular do ChatDemo (.phone).
+   Cores e proporções espelham o widget real do produto: cabeçalho azul,
+   barra da loja azul-clara, chat sobre off-white, gaveta do carrinho com
+   cabeçalho escuro (tinta) e botão azul de seguir para o pagamento. */
 
 .app-phone {
   background: #0b0f1a;
   color: var(--ink);
 }
 
+/* ── Cabeçalho do widget ─────────────────────────────────────────────── */
 .app-top {
   background: var(--blue);
   color: #fff;
-  padding: 44px 16px 12px;
+  padding: 44px 12px 10px;
   border-radius: 34px 34px 0 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   flex-shrink: 0;
 }
 
-.app-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 800;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-}
-
-.app-cart-icon {
-  position: relative;
+.app-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
   display: grid;
   place-items: center;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
 }
 
-.app-cart-icon b {
-  position: absolute;
-  top: -7px;
-  right: -9px;
-  min-width: 17px;
-  height: 17px;
-  padding: 0 4px;
-  border-radius: 999px;
-  background: #fff;
-  color: var(--blue);
-  font-size: 10.5px;
+.app-title {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  line-height: 1.15;
+}
+
+.app-title strong {
+  font-size: 13px;
   font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-title span {
+  font-size: 10px;
+  opacity: 0.85;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-top-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.14);
   display: grid;
   place-items: center;
+  flex-shrink: 0;
 }
 
+/* ── Barra da loja ───────────────────────────────────────────────────── */
 .app-store {
   background: var(--blue-soft);
-  color: var(--blue-ink);
-  font-size: 11.5px;
-  font-weight: 600;
-  padding: 7px 14px;
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 12px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   flex-shrink: 0;
-}
-
-.app-store-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #12a150;
 }
 
 .app-store em {
   margin-left: auto;
   font-style: normal;
-  color: var(--blue);
   font-weight: 700;
 }
 
+/* ── Conversa ────────────────────────────────────────────────────────── */
 .app-body {
   flex: 1;
+  min-height: 0;
   background: var(--paper);
-  padding: 14px 12px;
+  padding: 12px 10px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   overflow: hidden;
 }
 
+.app-body-end {
+  justify-content: flex-end;
+}
+
+.app-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.app-row.user {
+  justify-content: flex-end;
+}
+
+.app-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.app-avatar svg {
+  width: 14px;
+  height: 14px;
+}
+
 .app-msg {
-  max-width: 86%;
-  padding: 9px 12px;
-  border-radius: 14px;
-  font-size: 13px;
+  max-width: 78%;
+  padding: 8px 11px;
+  border-radius: 16px;
+  font-size: 12px;
   line-height: 1.4;
-  position: relative;
 }
 
 .app-msg.bot {
-  align-self: flex-start;
   background: #fff;
-  border: 1px solid var(--line);
   border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 4px rgba(10, 91, 252, 0.06);
 }
 
 .app-msg.user {
-  align-self: flex-end;
   background: var(--blue);
   color: #fff;
   border-bottom-right-radius: 4px;
 }
 
 .app-speak {
-  display: block;
-  margin-top: 4px;
-  font-size: 11px;
-  opacity: 0.6;
+  color: #9aa3b2;
+  align-self: center;
+  flex-shrink: 0;
 }
 
 .app-typing {
   display: flex;
   gap: 4px;
-  padding: 12px 14px;
+  padding: 11px 13px;
 }
 
 .app-typing i {
@@ -135,134 +175,172 @@
   animation-delay: 0.3s;
 }
 
+/* ── Entrada ─────────────────────────────────────────────────────────── */
 .app-input {
   flex-shrink: 0;
   background: #fff;
-  border-top: 1px solid var(--line);
-  padding: 8px 12px;
+  padding: 8px 10px;
   display: flex;
-  gap: 8px;
+  gap: 6px;
   align-items: center;
+}
+
+.app-input-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
 }
 
 .app-input-field {
   flex: 1;
+  min-width: 0;
   background: var(--paper);
   border-radius: 999px;
-  padding: 9px 14px;
+  padding: 8px 12px;
   color: #98a0ad;
-  font-size: 12.5px;
+  font-size: 11.5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.app-input-mic {
-  width: 34px;
-  height: 34px;
+.app-input-send {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
+  background: #7ea6ff;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.app-input-send.on {
   background: var(--blue);
-  flex-shrink: 0;
-  position: relative;
 }
 
-.app-input-mic::after {
-  content: '';
-  position: absolute;
-  inset: 10px 13px;
-  border-radius: 4px;
-  background: #fff;
-}
-
-.app-nav {
+/* ── Gaveta do carrinho (em fluxo: cresce e empurra o chat) ──────────── */
+.app-cart-wrap {
+  /* A "tela" branca do chat atrás da folha, como no widget real: é o que
+     aparece nos cantos arredondados do cabeçalho — exatamente o mesmo tom
+     da faixa do input, logo acima. */
   flex-shrink: 0;
   background: #fff;
-  border-top: 1px solid var(--line);
-  padding: 8px 6px 14px;
   border-radius: 0 0 34px 34px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  font-size: 9.5px;
-  font-weight: 600;
-  color: #98a0ad;
-  text-align: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
-.app-nav span {
-  display: grid;
-  gap: 3px;
-  justify-items: center;
-}
-
-.app-nav span i {
-  width: 18px;
-  height: 18px;
-  border-radius: 6px;
-  background: currentColor;
-  opacity: 0.35;
-}
-
-.app-nav span.on {
-  color: var(--blue);
-}
-
-.app-nav span.on i {
-  opacity: 1;
-}
-
-/* Gaveta do carrinho */
 .app-cart {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
+  height: 100%;
   background: #fff;
-  border-radius: 22px 22px 34px 34px;
-  box-shadow: 0 -20px 50px -20px rgba(0, 0, 0, 0.45);
-  padding: 8px 12px 14px;
+  border-radius: 22px 22px 0 0;
+  /* Sem sombra: ela escurecia os cantos atrás do cabeçalho e a faixa do
+     input, e o tom deixava de bater com o do widget real. */
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-height: 68%;
-}
-
-.app-cart-handle {
-  width: 38px;
-  height: 4px;
-  border-radius: 4px;
-  background: var(--line);
-  margin: 0 auto 2px;
+  overflow: hidden;
 }
 
 .app-cart-head {
+  background: #0b0f1a;
+  color: #fff;
+  padding: 0 10px;
+  min-height: 54px;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: 13px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+  border-radius: 22px 22px 0 0;
 }
 
-.app-cart-head span {
-  color: var(--muted);
+.app-cart-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.app-cart-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.app-cart-name b {
+  background: var(--blue);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.app-cart-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.app-cart-right strong {
   font-size: 11.5px;
+  font-weight: 800;
+  color: #34c26a;
+}
+
+.app-cart-right i {
+  font-style: normal;
+  font-size: 9px;
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  border-radius: 6px;
+  padding: 2px 5px;
+}
+
+.app-cart-right em {
+  font-style: normal;
+  font-size: 10px;
+  color: #7ea6ff;
+}
+
+.app-cart-savings {
+  font-size: 10px;
+  font-weight: 700;
+  color: #34c26a;
 }
 
 .app-cart-list {
   list-style: none;
-  padding: 0;
+  padding: 10px 10px 0;
   margin: 0;
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  align-content: start;
+  flex: 1;
+  min-height: 0;
+  background: var(--paper);
   overflow: hidden;
 }
 
 .app-cart-list li {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #edf0f7;
+  box-shadow: 0 1px 4px rgba(10, 91, 252, 0.05);
+  padding: 9px 10px 8px;
   display: grid;
-  grid-template-columns: 30px 1fr auto auto;
-  gap: 8px;
-  align-items: center;
-  padding: 6px 8px;
-  border-radius: 10px;
-  border: 1px solid transparent;
+  gap: 6px;
   transition:
     background 0.3s,
     border-color 0.3s;
@@ -273,117 +351,151 @@
   border-color: rgba(0, 81, 245, 0.3);
 }
 
+.app-item-top {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 9px;
+  align-items: flex-start;
+}
+
 .app-thumb {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--paper);
+  display: grid;
+  place-items: center;
+  font-size: 15px;
 }
 
 .app-item {
   display: grid;
   gap: 1px;
   min-width: 0;
+  line-height: 1.2;
 }
 
 .app-item strong {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.app-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 10px;
-  color: var(--blue);
+.app-item-sub {
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
+.app-promo {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #1e9e48;
+}
+
+.app-promo s {
   font-weight: 600;
 }
 
-.app-brand em {
-  font-style: normal;
-  background: var(--blue-soft);
-  padding: 1px 7px;
-  border-radius: 999px;
+.app-price {
+  display: grid;
+  justify-items: end;
+  line-height: 1.15;
+  white-space: nowrap;
 }
 
-.app-brand i {
-  font-style: normal;
-  opacity: 0.6;
+.app-price s {
+  font-size: 9px;
+  color: #9aa3b2;
+}
+
+.app-price b {
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.app-price b.promo {
+  color: #1e9e48;
+}
+
+.app-item-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .app-qty {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: 12px;
+  gap: 2px;
+  background: var(--paper);
+  border-radius: 999px;
+  padding: 2px 4px;
 }
 
 .app-qty span {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  border: 1px solid var(--line);
   display: grid;
   place-items: center;
   font-weight: 700;
-  color: var(--muted);
+  font-size: 13px;
+  color: var(--blue);
   transition:
     background 0.2s,
     color 0.2s;
 }
 
+.app-qty span.off {
+  color: #c7cedb;
+}
+
 .app-qty span.tap {
   background: var(--blue);
   color: #fff;
-  border-color: var(--blue);
 }
 
 .app-qty b {
-  min-width: 12px;
+  min-width: 18px;
   text-align: center;
-  font-size: 12px;
+  font-size: 11.5px;
 }
 
-.app-price {
-  font-size: 11.5px;
-  font-weight: 800;
-  white-space: nowrap;
+.app-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.app-brand em {
+  font-style: normal;
 }
 
 .app-cart-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-top: 1px solid var(--line);
-  padding-top: 8px;
-}
-
-.app-cart-foot > div {
-  display: grid;
-  line-height: 1.1;
-}
-
-.app-cart-foot > div span {
-  font-size: 10.5px;
-  color: var(--muted);
-}
-
-.app-cart-foot > div strong {
-  font-size: 15px;
-  font-weight: 800;
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid #edf0f7;
+  padding: 10px 10px 16px;
 }
 
 .app-checkout {
+  width: 100%;
   background: var(--blue);
   color: #fff;
   border: 0;
-  border-radius: 999px;
-  padding: 10px 16px;
-  font-weight: 800;
-  font-size: 12.5px;
+  border-radius: 12px;
+  padding: 11px 12px;
+  font-weight: 700;
+  font-size: 11.5px;
+  font-family: inherit;
   cursor: default;
+  white-space: nowrap;
 }

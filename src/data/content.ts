@@ -313,18 +313,32 @@ export const chatScript: ChatScene[] = [
   { kind: 'reset' },
 ]
 
-// Simulação da interface de APLICATIVO no hero (AppDemo). Mesma pegada da do
-// WhatsApp: valores plausíveis, com marca alternativa para mostrar a troca.
+// Simulação da interface de APLICATIVO no hero (AppDemo). Espelha o widget
+// "Compre conversando" do produto (cabeçalho, barra da loja, chat, gaveta do
+// carrinho): valores plausíveis, com marca alternativa para mostrar a troca.
+// O total da resposta do assistente tem de bater com a soma dos itens.
 export const appDemo = {
-  store: 'Loja Centro · 0,9 km · entrega',
-  welcome: 'Oi! Me diga o que você precisa e eu monto o carrinho 🛒',
+  title: 'Compre conversando',
+  subtitle: 'Diga o que precisa, o carrinho fica pronto',
+  store: 'Loja Centro · 0,9 km',
+  storeSwitch: 'Trocar',
+  welcome: 'Bem-vindo! Você está comprando na Loja Centro. Me diga o que você precisa!',
   userText: 'compras da semana pra 2 pessoas, até R$ 150',
   botText: 'Montei uma lista de semana para 2 pessoas por R$ 116,40. Dá uma olhada no carrinho 👇',
+  placeholder: 'Fale ou digite o que você precisa...',
+  cart: {
+    title: 'Meu Carrinho',
+    clear: 'Esvaziar',
+    close: 'Fechar ✕',
+    open: 'Ver Itens ▴',
+    savings: 'Você economiza',
+    checkout: 'Seguir para o pagamento',
+  },
   items: [
-    { id: 'arroz', name: 'Arroz Branco T1 5kg', brand: 'Tio João', price: 24.9, qty: 1, color: '#f3d9a4', altBrand: { name: 'Camil', price: 22.9 } },
-    { id: 'feijao', name: 'Feijão Carioca 1kg', brand: 'Camil', price: 8.49, qty: 2, color: '#c9a27e' },
-    { id: 'frango', name: 'Frango Inteiro kg', brand: 'Sadia', price: 12.9, qty: 2, color: '#f7c9b0' },
-    { id: 'leite', name: 'Leite Integral 1L', brand: 'Piracanjuba', price: 5.79, qty: 6, color: '#dfe7f5' },
-    { id: 'banana', name: 'Banana Prata kg', brand: 'Hortifruti', price: 6.99, qty: 2, color: '#f5e37a' },
+    { id: 'arroz', name: 'Arroz Branco T1 5kg', brand: 'Tio João', unit: 'un', price: 24.9, oldPrice: 27.9, qty: 1, altBrand: { name: 'Camil', price: 22.9, oldPrice: 24.9 } },
+    { id: 'banana', name: 'Banana Prata', brand: 'Hortifruti', unit: 'kg', price: 6.99, oldPrice: 7.99, qty: 2 },
+    { id: 'feijao', name: 'Feijão Carioca 1kg', brand: 'Camil', unit: 'un', price: 8.49, qty: 2 },
+    { id: 'frango', name: 'Frango Inteiro', brand: 'Sadia', unit: 'kg', price: 12.9, qty: 2 },
+    { id: 'leite', name: 'Leite Integral 1L', brand: 'Piracanjuba', unit: 'un', price: 5.79, qty: 6 },
   ],
 }
