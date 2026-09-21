@@ -397,6 +397,12 @@ CTA.
 - Todos os links externos têm `target="_blank" rel="noreferrer"`.
 - `index.html` já tem `<meta name="theme-color" content="#0051F5">` e Open
   Graph básico (sem imagem OG ainda — ver pendências).
+- **Analytics só em produção** (regra do dono, 20/09/2026): o GA4 e o Clarity
+  são injetados por um único script inline no `index.html` que checa o
+  `location.hostname`; em `localhost`, `127.0.0.1`, `::1` ou `file:` ele não
+  carrega nada e avisa no console (`[analytics] desligado fora de produção`).
+  Vale para `npm run dev`, `npm run preview` e o HTML estático. Os IDs estão
+  nas constantes `GA_ID` e `CLARITY_ID` desse script.
 - Em **abas em segundo plano** o navegador pausa `requestAnimationFrame`, e o
   framer-motion só anima quando a aba ganha foco. Em teste automatizado isso
   aparece como "página azul vazia"; num usuário real é normal (ele só vê a aba
