@@ -168,13 +168,19 @@ Mensalidade por volume de mensagens + implantação única por faixa de catálog
 
 "Sem teto de volume" · "A mensalidade não varia com o tamanho do catálogo".
 
-**Piloto sem custo:** validação real com o catálogo real do cliente, a preço
-de custo por até 1 mês (era 3 meses no material; reduzido pelo dono em
-18/09/2026), sem compromisso de contratação. Mede: conversão,
+**Piloto sem custo** (card com etiqueta "Condição promocional", desde
+20/09/2026): validação real com o catálogo real do cliente, **sem custo de
+implantação** e mensalidade a preço de custo por até 1 mês (era 3 meses no
+material; reduzido pelo dono em 18/09/2026), sem compromisso de contratação. Mede: conversão,
 ticket médio, aderência ao catálogo, experiência do consumidor, demanda não
 atendida; melhorias com a equipe. "Se fizer sentido → entrada em um dos
 planos."
 
+> **Implantação nos cards:** o bloco "Implantação única · R$ X" de cada plano
+> está **desligado** desde 20/09/2026 pela flag `showSetupFee` em
+> `src/data/flags.ts` (os valores continuam em `plans[].setup`). Motivo: com o
+> piloto "sem custo de implantação" em destaque, o valor concorria com a oferta.
+>
 > **Decisão em aberto:** os preços estão públicos na página porque estavam no
 > material. Se o dono do projeto não quiser preço aberto, basta remover
 > `<Plans />` de `src/App.tsx` (o piloto está dentro de `Plans.tsx`; se quiser
@@ -266,9 +272,10 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 | 6 | Canais | `Channels.tsx` + `split.css` | `#canais` | **seção dividida ao meio**, sangrando até as bordas: verde do WhatsApp à esquerda, azul Tela Azul à direita; cada lado com a própria demo rodando (`ChatDemo` / `AppDemo`), 4 pontos fortes e "melhor para" embaixo; selo "ou os dois" na costura; abaixo, os 3 cenários e o bloco "Funcionando hoje" |
 | 7 | Dashboard | `Dashboard.tsx` | `#painel` | painel ilustrado com KPIs, barras e campanhas animadas |
 | 8 | Recursos | `Features.tsx` | `#recursos` | os 8 recursos "em todos os planos" |
-| 9 | Planos | `Plans.tsx` | `#planos` | tabela de 4 planos + piloto sem custo |
+| 8b | Divisória | `Divider.tsx` | — | fundo geométrico entre Recursos e Planos (z-index −1, margens negativas): um campo azul com a grade, inclinado, por trás da última fileira de cards de Recursos — os cards "flutuam" sobre ele —, um traço azul-escuro suave e uma faixa clara desfocada que passa por trás do título de Planos; esmaecido em cima e embaixo por `mask-image`. Só CSS (`clip-path` em %), escala do celular ao desktop. Iterado com o dono em 20/09/2026: versões com a faixa por cima dos cards e com traço preto foram consideradas "abruptas" |
+| 9 | Planos | `Plans.tsx` | `#planos` | card do piloto sem custo **acima** dos 4 planos (o visitante vê a opção grátis antes dos preços — regra do dono, 20/09/2026) |
 | 10 | Sobre | `Manifesto.tsx` | `#sobre` | o manifesto da marca, literal |
-| 11 | CTA final | `CTA.tsx` | `#contato` | "A próxima conversa pode virar um carrinho" + botão da demo + Instagram + telefone de contato |
+| 11 | CTA final | `CTA.tsx` | `#contato` | "A próxima conversa pode virar uma venda" + botão da demo + Instagram + telefone de contato |
 | 12 | Rodapé | `Footer.tsx` | — | logo, links, social, origem no hackathon |
 
 Os `id`s são os alvos do menu (`nav` em `content.ts`). Rolagem suave via
@@ -300,6 +307,7 @@ src/
   main.tsx                 monta <App/>; importa global.css e sections.css
   App.tsx                  ordem das seções
   data/content.ts          TODO o conteúdo textual + números + roteiro do chat
+  data/flags.ts            feature flags (liga/desliga partes da página)
   styles/global.css        tokens, reset, tipografia, botões, cards, grids, reduced-motion
   styles/sections.css      estilo de cada seção (marquee, stats, steps, cc, canais,
                            dashboard, features, planos, manifesto, cta, footer) + responsivo
@@ -314,6 +322,7 @@ src/
     AppDemo.tsx + app-demo.css     mesmo celular com a interface de APP: barra da loja,
                                    chat, gaveta do carrinho (marca, quantidade, total)
     Marquee.tsx            faixa em movimento
+    Divider.tsx            divisória geométrica (clip-path) entre Recursos e Planos
     Channels.tsx + split.css     seção dividida (verde × azul) com as duas demos
     Stats.tsx, HowItWorks.tsx, ChatCommerce.tsx,
     Dashboard.tsx, Features.tsx, Plans.tsx, Manifesto.tsx, CTA.tsx, Footer.tsx
@@ -458,9 +467,14 @@ Custom domain `telazul.tech` + Enforce HTTPS.
 - [ ] Decidir se os preços ficam públicos.
 - [ ] Formulário/e-mail de contato, se quiser um canal além do WhatsApp.
 - [x] Analytics — GA4 instalado em 18/09/2026 no `index.html` (gtag). Propriedade
-  "Tela Azul — Landing Page" (id `554936614`) na conta "Blog Pessoal" do
-  Google Analytics; fluxo web `15804351302`; **ID de métrica `G-8HZPPTE0RB`**.
-  URL cadastrada no fluxo: `https://telazul.tech`.
+  "Tela Azul — Landing Page" (id `554936614`) na conta **"Tela Azul"**
+  (id `408860550`) do Google Analytics; fluxo web `15804351302`; **ID de
+  métrica `G-8HZPPTE0RB`**. URL cadastrada no fluxo: `https://telazul.tech`.
+  Link direto: `https://analytics.google.com/analytics/web/#/p554936614/`.
+  (Foi criada por engano na conta "Blog Pessoal" e movida em 20/09/2026 com
+  "Mover propriedade" — id, tag e histórico não mudaram. Uma propriedade
+  vazia "Temporária (apagar)", exigida pelo assistente de criação da conta,
+  está na lixeira e some sozinha em 25/10/2026.)
 - [x] Microsoft Clarity — instalado em 18/09/2026 no `index.html`, logo após o
   GA4. Projeto "Tela Azul - Landing Page", **ID `ykdgw47fd7`**, site
   `telazul.tech`, setor B2B Services. Painel: clarity.microsoft.com (login com a

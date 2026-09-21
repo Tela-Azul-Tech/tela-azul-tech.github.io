@@ -80,6 +80,14 @@ svg {
   margin-inline: auto;
 }
 
+/* Stacking context próprio: deixa elementos com z-index negativo (a
+   divisória entre Recursos e Planos) ficarem atrás do conteúdo, mas na
+   frente do fundo da página. */
+main {
+  position: relative;
+  isolation: isolate;
+}
+
 .section {
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;

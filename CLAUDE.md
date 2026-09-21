@@ -28,4 +28,4 @@ There is no test suite. Verification is `npm run build` + `npm run lint` + looki
 
 ## Where things are
 
-`src/App.tsx` is just the section order. One component per section in `src/components/`, section styles in `src/styles/sections.css`; `Nav`, `Hero` and `ChatDemo` carry their own `.css` next to them. Section ids (`#como-funciona`, `#planos`, …) are the nav targets in `content.ts` — renaming one breaks the menu.
+`src/data/flags.ts` holds feature flags (currently `showSetupFee`, off) — toggle there, never by deleting markup. `src/App.tsx` is just the section order. One component per section in `src/components/`, section styles in `src/styles/sections.css`; `Nav`, `Hero` and `ChatDemo` carry their own `.css` next to them. Section ids (`#como-funciona`, `#planos`, …) are the nav targets in `content.ts` — renaming one breaks the menu.

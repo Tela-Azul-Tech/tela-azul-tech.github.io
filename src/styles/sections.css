@@ -520,9 +520,61 @@
   font-size: 15px;
 }
 
+/* ── Divisória geométrica (entre Recursos e Planos) ──────────────────────── */
+/* Muito mais alta que o vão entre as seções (sobe até o meio de Recursos),
+   com margens negativas, e ATRÁS do conteúdo (z-index -1 dentro do stacking
+   context do <main>): funciona como fundo — a última fileira de cards de
+   Recursos "flutua" sobre a faixa azul, e o título de Planos fica por cima
+   da faixa clara. Por isso o fundo da seção Planos começa transparente,
+   senão cobriria a parte de baixo. */
+.divider {
+  position: relative;
+  z-index: -1;
+  height: clamp(360px, 40vw, 780px);
+  margin-top: clamp(-600px, -31vw, -200px);
+  margin-bottom: clamp(-320px, -16.5vw, -90px);
+  overflow: hidden;
+  pointer-events: none;
+  /* Esmaece só a base: em cima o azul começa com borda limpa (o dono
+     preferiu sem o degradê branco). */
+  -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+  mask-image: linear-gradient(to bottom, #000 72%, transparent);
+}
+
+.divider-cross,
+.divider-band,
+.divider-line {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Faixa clara desfocada: vira um "rastro" suave por trás do título. */
+.divider-cross {
+  background: var(--blue-soft);
+  clip-path: polygon(0 60%, 100% 88%, 100% 106%, 0 78%);
+  filter: blur(22px);
+}
+
+.divider-band {
+  background-color: var(--blue);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  clip-path: polygon(0 0, 100% 10%, 100% 75%, 0 65%);
+}
+
+.divider-line {
+  background: var(--blue-ink);
+  opacity: 0.55;
+  clip-path: polygon(0 68%, 100% 78%, 100% 80%, 0 70%);
+}
+
 /* ── Planos ──────────────────────────────────────────────────────────────── */
 .plans-section {
-  background: linear-gradient(180deg, var(--paper), #eef1f8);
+  /* começa transparente para a divisória (atrás) aparecer no topo */
+  background: linear-gradient(180deg, transparent, #eef1f8);
 }
 
 .plan {
@@ -549,6 +601,27 @@
   color: #fff;
   border-color: var(--blue);
   box-shadow: 0 30px 60px -25px var(--blue-glow);
+}
+
+/* Caixa dos planos: mesma moldura do piloto (borda, degradê, sombra). */
+.plans-box {
+  position: relative;
+  background: linear-gradient(135deg, #fff 0%, var(--blue-soft) 100%);
+  border: 2px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 34px 38px 38px;
+  box-shadow: 0 24px 60px -30px rgba(0, 81, 245, 0.45);
+}
+
+.plans-tag {
+  margin-bottom: 14px;
+  padding: 9px 20px;
+  font-size: 15px;
+}
+
+.plans-title {
+  max-width: 26ch;
+  margin-bottom: 28px;
 }
 
 .plan-badge {
@@ -635,15 +708,59 @@
 }
 
 .pilot {
-  margin-top: 28px;
-  background: #fff;
-  border: 1px solid var(--line);
+  position: relative;
+  margin-bottom: 36px;
+  background: linear-gradient(135deg, #fff 0%, var(--blue-soft) 100%);
+  border: 2px solid var(--blue);
   border-radius: var(--radius);
   padding: 34px 38px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 28px;
   align-items: center;
+  box-shadow: 0 24px 60px -30px rgba(0, 81, 245, 0.45);
+}
+
+/* Etiqueta "Condição promocional": pílula azul com um brilho que atravessa
+   o texto de tempos em tempos (gradiente animado por background-position). */
+.pilot-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  overflow: hidden;
+  background-image: linear-gradient(
+    110deg,
+    var(--blue) 0%,
+    var(--blue) 40%,
+    #7fa8ff 50%,
+    var(--blue) 60%,
+    var(--blue) 100%
+  );
+  background-size: 250% 100%;
+  animation: pilot-shine 3.2s ease-in-out infinite;
+}
+
+@keyframes pilot-shine {
+  0% {
+    background-position: 100% 0;
+  }
+
+  60%,
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.pilot p strong {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .pilot-icon {
@@ -891,6 +1008,11 @@
 
   .pilot {
     grid-template-columns: 1fr;
+  }
+
+  .pilot,
+  .plans-box {
+    padding: 24px 22px;
   }
 
 }

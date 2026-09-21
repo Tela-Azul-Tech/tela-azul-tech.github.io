@@ -19,7 +19,7 @@ export function CTA() {
           />
           <span className="eyebrow">Próximo passo</span>
           <h2 className="display h2">
-            A próxima conversa <strong>pode virar um carrinho.</strong>
+            A próxima conversa <strong>pode virar uma venda.</strong>
           </h2>
           <p className="lead">
             Experimente agora pelo WhatsApp. Converse com o assistente, faça um pedido do seu jeito
