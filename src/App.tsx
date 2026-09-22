@@ -10,6 +10,7 @@ import { HowItWorks } from './components/HowItWorks'
 import { Manifesto } from './components/Manifesto'
 import { Marquee } from './components/Marquee'
 import { Nav } from './components/Nav'
+import { Niches } from './components/Niches'
 import { Plans } from './components/Plans'
 import { Stats } from './components/Stats'
 
@@ -23,6 +24,7 @@ export default function App() {
         <Stats />
         <HowItWorks />
         <ChatCommerce />
+        <Niches />
         <Channels />
         <Dashboard />
         <Features />

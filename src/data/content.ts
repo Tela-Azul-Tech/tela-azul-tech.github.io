@@ -30,9 +30,11 @@ export const nav = [
   { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Chat commerce', href: '#chat-commerce' },
   { label: 'Canais', href: '#canais' },
+  { label: 'Painel', href: '#painel' },
   { label: 'Recursos', href: '#recursos' },
   { label: 'Planos', href: '#planos' },
   { label: 'Sobre', href: '#sobre' },
+  { label: 'Contato', href: '#contato' },
 ]
 
 export const stats = [
@@ -179,6 +181,52 @@ export const working = [
   'Ajuste de quantidade e troca de marca na conversa',
   'Painel administrativo com campanhas',
 ]
+
+// Seção "Para qualquer nicho": cada card é um pedido na língua daquele
+// negócio — a prova de que o assistente não é só de supermercado. Aparecem
+// num carrossel infinito em duas fileiras; a ordem aqui é a ordem na tela.
+export const niches = [
+  { name: 'Supermercado', ask: 'compras do mês pra 4 pessoas, até R$ 600' },
+  { name: 'Farmácia', ask: 'dipirona, um protetor solar e algo pra tosse' },
+  { name: 'Pet shop', ask: 'ração pro meu labrador e um antipulgas' },
+  { name: 'Restaurante e delivery', ask: 'dois combos sem cebola e um suco de laranja' },
+  { name: 'Moda', ask: 'uma camisa social branca, tamanho M' },
+  { name: 'Materiais de construção', ask: 'cimento, areia e 20 metros de fio 2,5' },
+  { name: 'Cosméticos', ask: 'shampoo pra cabelo cacheado e um hidratante' },
+  { name: 'Autopeças', ask: 'pastilha de freio pro Onix 2020' },
+  { name: 'Hortifruti', ask: 'banana, tomate e o que tiver na promoção' },
+  { name: 'Açougue', ask: '2 kg de picanha e linguiça pro churrasco' },
+  { name: 'Eletrônicos', ask: 'um fone bluetooth até 200 reais' },
+  { name: 'Livraria e papelaria', ask: 'o material escolar da lista do 5º ano' },
+  { name: 'Floricultura', ask: 'um buquê de aniversário, entrega hoje' },
+  { name: 'Bebidas', ask: 'cerveja gelada e gelo pra 10 pessoas' },
+]
+
+// Seção "Painel do administrador". As 10 capacidades vêm do resumo em
+// app-mercado-hackathon/funcionalidades-landing-claude.md. As abas agrupam
+// as capacidades (índices em `caps`) e cada aba tem um mockup animado no
+// componente Dashboard.
+export const adminPanel = {
+  capabilities: [
+    { title: 'Regras comerciais e bias', text: 'por produto, marca, categoria, promoção, campanha, loja, estoque, preço ou qualquer atributo — ativa e desativa sem deploy' },
+    { title: 'Campanhas e promoções', text: 'período, participantes, desconto, bundles e bias vinculados; resultado por campanha' },
+    { title: 'Catálogo completo', text: 'atributos livres, marcas, imagens, substitutos e complementares, importação em massa, enriquecimento por IA' },
+    { title: 'Pedidos e pagamentos', text: 'timeline por etapa com SLA; Pix e cartão atualizando o pedido sozinhos' },
+    { title: 'Substituição de indisponíveis', text: 'critérios configuráveis, várias alternativas, aprovação pelo cliente antes de pagar' },
+    { title: 'Comunicação por WhatsApp', text: 'templates aprovados para campanhas, reativação, carrinho abandonado e status do pedido' },
+    { title: 'Segmentos e cupons', text: 'segmentos por regra e cupons por campanha, loja ou cliente' },
+    { title: 'Analytics', text: 'comercial, por produto e loja, comportamental, intenção, demanda não atendida, qualidade e custo da IA' },
+    { title: 'Auditoria de cada conversa', text: 'o que a IA considerou, o que escolheu e qual regra ou campanha agiu' },
+    { title: 'Operação e governança', text: 'lojas, zonas e taxas de entrega, permissões por perfil e loja, LGPD' },
+  ],
+  tabs: [
+    { id: 'regras', label: 'Regras e bias', caps: [0, 4] },
+    { id: 'campanhas', label: 'Campanhas', caps: [1, 5, 6] },
+    { id: 'pedidos', label: 'Catálogo e pedidos', caps: [2, 3] },
+    { id: 'analytics', label: 'Analytics', caps: [7] },
+    { id: 'auditoria', label: 'Auditoria e operação', caps: [8, 9] },
+  ],
+}
 
 export const features = [
   {

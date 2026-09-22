@@ -263,14 +263,15 @@ mic `#128C7E`, ticks azuis `#53BDEB`.
 
 | # | seção | componente | id | intenção |
 |---|---|---|---|---|
-| 0 | Barra fixa | `Nav.tsx` | — | transparente sobre o hero, vira vidro fosco ao rolar; CTA WhatsApp sempre visível; menu hambúrguer ≤960px |
+| 0 | Barra fixa | `Nav.tsx` | — | transparente sobre o hero, vira vidro fosco ao rolar; "Testar agora" com dropdown (WhatsApp / web app); menu hambúrguer ≤960px. Itens: Como funciona · Chat commerce · Canais · Painel · Recursos · Planos · Sobre · Contato (Nichos e Números ficam de fora de propósito: são argumento, não destino) |
 | 1 | Hero | `Hero.tsx` + `ChatDemo.tsx` + `AppDemo.tsx` | `#top` | frase-tese + celular com a simulação acontecendo sozinha; **seletor WhatsApp / App da marca** alterna entre as duas simulações (carrossel automático a cada 20 s, para ao clicar) |
 | 2 | Marquee | `Marquee.tsx` | — | faixa escura em movimento com os termos-chave; separa hero de conteúdo |
 | 3 | Números | `Stats.tsx` + `Counter.tsx` | `#stats` | frase "Recomendação não é apenas experiência. É geração de receita." + os 4 dados com fonte, contadores animados |
 | 4 | Como funciona | `HowItWorks.tsx` | `#como-funciona` | Entende → Recomenda → Converte |
 | 5 | Chat commerce | `ChatCommerce.tsx` | `#chat-commerce` | define o termo + 6 diferenciais + faixa "IA com contexto de negócio" |
+| 5b | Nichos | `Niches.tsx` | `#nichos` | "Para qualquer nicho": atendente autônomo, 24h, que vende por você; 3 selos e um **carrossel infinito em duas fileiras** (sentidos opostos, pausa no hover) com um pedido na língua de cada negócio — supermercado, farmácia, pet shop, delivery, moda, construção… (`niches` em `content.ts`). Fundo `--ink`. Adicionada em 22/09/2026 |
 | 6 | Canais | `Channels.tsx` + `split.css` | `#canais` | **seção dividida ao meio**, sangrando até as bordas: verde do WhatsApp à esquerda, azul Tela Azul à direita; cada lado com a própria demo rodando (`ChatDemo` / `AppDemo`), 4 pontos fortes e "melhor para" embaixo; selo "ou os dois" na costura; abaixo, os 3 cenários e o bloco "Funcionando hoje" |
-| 7 | Dashboard | `Dashboard.tsx` | `#painel` | painel ilustrado com KPIs, barras e campanhas animadas |
+| 7 | Painel do administrador | `Dashboard.tsx` | `#painel` | reescrito em 22/09/2026: **5 abas** (Regras e bias · Campanhas · Catálogo e pedidos · Analytics · Auditoria e operação) que trocam sozinhas a cada 6 s enquanto na tela (clique desliga o automático), cada uma com um mockup animado; abaixo, as **10 capacidades** do painel (de `funcionalidades-landing-claude.md`), com as ligadas à aba ativa acesas. Dados em `adminPanel` (`content.ts`); os mockups são ilustrativos e marcados assim |
 | 8 | Recursos | `Features.tsx` | `#recursos` | os 8 recursos "em todos os planos" |
 | 8b | Divisória | `Divider.tsx` | — | fundo geométrico entre Recursos e Planos (z-index −1, margens negativas): um campo azul com a grade, inclinado, por trás da última fileira de cards de Recursos — os cards "flutuam" sobre ele —, um traço azul-escuro suave e uma faixa clara desfocada que passa por trás do título de Planos; esmaecido em cima e embaixo por `mask-image`. Só CSS (`clip-path` em %), escala do celular ao desktop. Iterado com o dono em 20/09/2026: versões com a faixa por cima dos cards e com traço preto foram consideradas "abruptas" |
 | 9 | Planos | `Plans.tsx` | `#planos` | card do piloto sem custo **acima** dos 4 planos (o visitante vê a opção grátis antes dos preços — regra do dono, 20/09/2026) |
@@ -322,6 +323,7 @@ src/
     AppDemo.tsx + app-demo.css     mesmo celular com a interface de APP: barra da loja,
                                    chat, gaveta do carrinho (marca, quantidade, total)
     Marquee.tsx            faixa em movimento
+    Niches.tsx             "para qualquer nicho" + carrossel de pedidos por nicho
     Divider.tsx            divisória geométrica (clip-path) entre Recursos e Planos
     Channels.tsx + split.css     seção dividida (verde × azul) com as duas demos
     Stats.tsx, HowItWorks.tsx, ChatCommerce.tsx,
@@ -332,7 +334,7 @@ src/
 
 Regra: **nenhum texto de marketing dentro de componente**. Tudo vem daqui:
 `WHATSAPP_DEMO_*`, `WHATSAPP_CONTACT_*`, `WHATSAPP_PILOT_LINK`, `INSTAGRAM`, `nav`, `stats`, `steps`,
-`differentials`, `comparison`, `scenarios`, `working`, `features`, `plans`, `manifesto`, `appDemo`,
+`differentials`, `niches`, `adminPanel`, `comparison`, `scenarios`, `working`, `features`, `plans`, `manifesto`, `appDemo`,
 `chatScript`. Exceções deliberadas (texto curto acoplado ao layout): títulos de
 seção com `RevealWords`, textos do `Dashboard` ilustrado, o lead do hero e do
 CTA.
@@ -366,8 +368,16 @@ CTA.
   de 20 s alterna, e o primeiro clique no seletor (`.hero-switch`) desliga o
   automático (`manual = true`). Troca com `AnimatePresence mode="wait"` e leve
   rotação 3D. Legenda abaixo do celular muda junto (`.hero-stage-caption`).
-- **Dashboard** — barras com `scaleY`, KPIs e campanhas em cascata, barra de
-  progresso com `width`.
+- **Painel (Dashboard)** — `tab` + `manual` no componente; `setInterval` de 6 s
+  só enquanto `useInView` (a seção está na tela); `AnimatePresence mode="wait"`
+  troca o mockup; cada aba anima por conta própria (chaves ligando com spring,
+  barras com `width`, timeline acendendo ponto a ponto, gráfico com `scaleY`,
+  log em cascata). A barra fina no botão da aba ativa é o progresso até a
+  próxima troca.
+- **Nichos** — carrossel CSS puro (`@keyframes niches-run`, `translateX(-50%)`
+  sobre a lista duplicada; segunda fileira `animation-direction: reverse`);
+  `mask-image` esmaece as pontas; pausa no hover; com `prefers-reduced-motion`
+  vira grade estática sem duplicatas.
 - **CTA** — brilho cônico girando em 30s atrás do texto (opacidade baixa para
   não atrapalhar leitura).
 - **Marquee e blobs** — CSS puro (`@keyframes`), independem de JS.
